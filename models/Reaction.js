@@ -1,19 +1,25 @@
-const mongoose = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
-const reactionSchema = new moongoose.Schema({
-    item: {type: String, required: true},
-    stockCount: Number,
-    price: Number,
-    inStock: Boolean,
-    lastAccessed: {type: Date, default: Date.now},
-});
-
-const User = mongoose.model('User', reactionSchema);
-
-const handleError = (err) => console.error(err);
-
-User.create(
+const reactionSchema = new moongoose.Schema(
     {
-        
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId(),
+        },
+        reactionSchema: {
+            type: String,
+            required: true,
+            maxlength: 50,
+            minlength: 4,
+            default: 'Unnamed reaction'
+        },
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
     }
-)
+);
+
+module.exports = reactionSchema;
