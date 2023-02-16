@@ -25,12 +25,14 @@ module.exports = {
         });
     },
 
-    // deleteThought(req,res) {
-//         Thought.findOneAndDelete({_id: req.params.thoughtId})
-//         .then((thought) => 
-//         !thought
-//         ? res.status(404).json({message: 'No thought with that ID'})
-//         : 
-//         )
-//     }
+    deleteThought(req,res) {
+        Thought.findOneAndDelete({_id: req.params.thoughtId})
+        .then((thought) => 
+        !thought
+        ? res.status(404).json({message: 'No thought with that ID'})
+        : Network.findOneAndUpdate(
+            {}
+        )
+        )
+    }
 }

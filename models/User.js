@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-const reactionSchema = require('./Reaction')
+const networkSchema = require('./Network')
 
 const userSchema = new Schema(
     {
@@ -18,7 +18,7 @@ const userSchema = new Schema(
             required: true,
             max_length: 50,
         },
-        reactions: [reactionSchema],
+        networks: [networkSchema],
     },
     {
         toJSON: {

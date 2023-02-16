@@ -1,17 +1,17 @@
 const { Schema, Types } = require('mongoose');
 
-const reactionSchema = new moongoose.Schema(
+const networkSchema = new moongoose.Schema(
     {
-        reactionId: {
+        networkId: {
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
-        reactionSchema: {
+        networkSchema: {
             type: String,
             required: true,
             maxlength: 50,
             minlength: 4,
-            default: 'Unnamed reaction'
+            default: 'Unnamed network'
         },
     },
     {
@@ -22,4 +22,4 @@ const reactionSchema = new moongoose.Schema(
     }
 );
 
-module.exports = reactionSchema;
+module.exports = networkSchema;
