@@ -15,6 +15,6 @@ router
     .route('/:networkId')
     .get(getSingleNetwork)
     .put(updateNetwork)
-    .delete(deleteNetwork)
+    .delete(deleteNetwork);
 
 module.exports = router;
