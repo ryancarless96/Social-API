@@ -1,8 +1,12 @@
 const express = require('express');
 const db = require("./config/connection");
-const path = require('path');
-const router = express.Router();
+const routes = require('./Routes');
 
-router.get('/', function(req,res){
-    res.sendFile(path.join(_dirnmae + '/indexhtml'))
-})
+const cwd = process.cwd();
+
+const PORT = process.env.PORT ||3001;
+const app = express();
+
+
+
+
