@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-const thoughtSchema = require('./Thought')
+
 
 const userSchema = new Schema(
     {
@@ -13,12 +13,14 @@ const userSchema = new Schema(
             required: true,
             max_length: 50,
         },
-        github: {
-            type: String,
-            required: true,
-            max_length: 50,
+      
+        thoughts: {
+            ref:'thoughts',
+            type:Schema.Types.ObjectId
         },
-        thoughts: [thoughtSchema],
+        friends: {
+            
+        }
     },
     {
         toJSON: {

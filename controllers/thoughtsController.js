@@ -1,4 +1,4 @@
-const { Reaction, User } = require('../models');
+const { Reaction, User, Thought } = require('../models');
 
 module.exports = {
     getNetworks(req, res) {

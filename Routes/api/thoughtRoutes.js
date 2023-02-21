@@ -6,7 +6,7 @@ const {
     createNetwork,
     updateNetwork,
     deleteNetwork,
-} = require('../../controllers/networkController');
+} = require('../../controllers/thoughtsController');
 
 
 router.route('/').get(getNetworks).post(createNetwork);
