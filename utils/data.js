@@ -1,5 +1,15 @@
 const users = [
-    
+    'Ryan',
+    'Tyson',
+    'Sarah',
+    'Lindsay',
+    'Eddy',
+    'Harry',
+    'Becky',
+    'Tom',
+    'Georgia',
+    'Will',
+    'Patty',
 ];
 
 const appDescriptions = [
@@ -9,7 +19,7 @@ const appDescriptions = [
 const getRandomArrItem = (arr)=> arr[Math.floor(Math.random() * arr.length)];
 
 const getRandomName = () => 
-`${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
+`${getRandomArrItem(users)} ${getRandomArrItem(users)}`;
 
 const getRandomThoughts = (int) => {
     const results = [];
