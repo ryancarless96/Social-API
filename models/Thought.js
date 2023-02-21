@@ -2,26 +2,21 @@ const {Schema, model} = require('mongoose');
 
 const thoughtSchema = new Schema(
     {
-        thoughtName: {
+        thoughtText: {
             type: String,
             required: true,
         },
-        startDate: {
+        createdAt: {
             type: Date,
             default: Date.now(),
         },
-        endDate: {
-            default: ()=> new Date(+new Date() + 84 * 24 * 60 * 60 * 1000),
+        username: {
+            type: String,
+            required: true,
         },
-        users: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
-            },
-        ],
     },
 );
 
-const Thought = model('thought', thoughtSchema);
+const reactions = model('reactions', reactionSchema);
 
 module.exports = Thought;

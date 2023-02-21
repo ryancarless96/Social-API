@@ -6,13 +6,14 @@ const reactionSchema = new moongoose.Schema(
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
-        reactionSchema: {
+        reactionBody: {
             type: String,
             required: true,
-            maxlength: 50,
-            minlength: 4,
-            default: 'Unnamed reaction'
         },
+        username: {
+            type: String,
+            required: true,
+        }
     },
     {
         toJSON: {

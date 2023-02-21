@@ -1,14 +1,14 @@
 const {Schema, model} = require('mongoose');
-const reactionSchema = require('./Reaction')
+const thoughtSchema = require('./Thought')
 
 const userSchema = new Schema(
     {
-        first: {
+        username: {
             type: String,
             required: true,
             max_length: 50,
         },
-        last: {
+        email: {
             type: String,
             required: true,
             max_length: 50,
@@ -18,7 +18,7 @@ const userSchema = new Schema(
             required: true,
             max_length: 50,
         },
-        reactions: [reactionSchema],
+        thoughts: [thoughtSchema],
     },
     {
         toJSON: {
