@@ -1,20 +1,29 @@
 const router = require('express').Router();
 
 const {
-    getNetworks,
-    getSingleNetwork,
-    createNetwork,
-    updateNetwork,
-    deleteNetwork,
+    getThoughts,
+    getThoughtById,
+    createThought,
+    updateThought,
+    deleteThought,
+    createReaction,
+    removeReaction,
+
 } = require('../../controllers/thoughtsController');
 
+router.route("/").get(getThoughts);
 
-router.route('/').get(getNetworks).post(createNetwork);
+router.route('/:userId').post(createThought);
+
 
 router
-    .route('/:networkId')
-    .get(getSingleNetwork)
-    .put(updateNetwork)
-    .delete(deleteNetwork);
+    .route('/:thoughtId')
+    .get(getThoughtById)
+    .put(updateThought)
+    .delete(deleteThought);
+
+router.route("/:thoughtId/reactions").post(createReaction);
+
+router.route("/:thoughtId/reactions/:reactionId").delete(removeReaction);
 
 module.exports = router;
