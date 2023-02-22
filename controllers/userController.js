@@ -80,7 +80,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
-    addThought(req, res) {
+    addNetwork(req, res) {
         console.log('You are adding a thought');
         console.log(req.body);
         User.findOneAndUpdate(
@@ -98,7 +98,7 @@ module.exports = {
             .catch((err)=> res.status(500).json(err));
     },
 
-    removeThoughts(req,res){
+    removeNetwork(req,res){
         User.findOneAndUpdate(
             {_id: req.params.userId},
             {$pull: {thought: {thoughtId: req.params.reactionId}}},

@@ -6,7 +6,7 @@ module.exports = {
             .then((reactions) => res.json(reactions))
             .catch((err) => res.status(500).json(err));
     },
-    getSingleReaction(req, res) {
+    getSingleNetwork(req, res) {
         Reaction.findOne({ _id: req.params.networkId })
             .select('-_v')
             .then((reaction) =>
@@ -17,7 +17,7 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
 
-    createReaction(req, res) {
+    createNetwork(req, res) {
         Reaction.create(req.body)
             .then((reaction) => res.json(reaction))
             .catch((err) => {
@@ -26,7 +26,7 @@ module.exports = {
             });
     },
 
-    deleteReaction(req, res) {
+    deleteNetwork(req, res) {
         Reaction.findOneAndDelete({ _id: req.params.networkId })
             .then((reaction) =>
                 !reaction
@@ -36,7 +36,7 @@ module.exports = {
             .then(()=> res.json({message: 'Reaction and users deleted!'}))
             .catch((err)=> res.status(500).json(err));
     },
-    updateReaction(req,res) {
+    updateNetwork(req,res) {
         Reaction.findOneAndUpdate(
             {_id: req.params.reactionId},
             {$set: req.body},

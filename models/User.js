@@ -19,8 +19,9 @@ const userSchema = new Schema(
             type:Schema.Types.ObjectId
         },
         friends: {
-
-        }
+            ref: 'user',
+            type: Schema.Types.ObjectId
+        },
     },
     {
         toJSON: {

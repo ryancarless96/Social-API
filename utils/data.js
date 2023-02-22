@@ -12,9 +12,7 @@ const users = [
     'Patty',
 ];
 
-const appDescriptions = [
-
-]
+const getRandomThoughts = [ ]
 
 const getRandomArrItem = (arr)=> arr[Math.floor(Math.random() * arr.length)];
 
