@@ -1,4 +1,5 @@
 const { Schema, Types } = require('mongoose');
+const data = require("../utils/data");
 
 const reactionSchema = new Schema(
     {
@@ -14,11 +15,12 @@ const reactionSchema = new Schema(
         },
         username: {
             type: String,
-            required: true,
+            required: [true, "Enter a username"],
         },
         createdAt: {
             type: Date,
             default: Date.now,
+            get: (createdAtVal) => data(createdAtVal),
         },
     },
     {
