@@ -1,24 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
-const headCount = async () =>
-    User.aggregate()
-        .count('userCount')
-        .then((numberofUsers) => numberofUsers);
-
-const grade = async (userId) =>
-    User.aggregate([
-        { $match: { _id: ObjectId(userId) } },
-        {
-            $unwind: 'thoughts',
-        },
-        {
-            $group: {
-                _id: ObjectId(userId),
-                overallGrade: { $avg: '$thoughts.score' },
-            },
-        },
-    ]);
 
 module.exports = {
 
@@ -80,7 +62,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
-    addNetwork(req, res) {
+    addNewFriend(req, res) {
         console.log('You are adding a thought');
         console.log(req.body);
         User.findOneAndUpdate(
@@ -98,7 +80,7 @@ module.exports = {
             .catch((err)=> res.status(500).json(err));
     },
 
-    removeNetwork(req,res){
+    removeFriend(req,res){
         User.findOneAndUpdate(
             {_id: req.params.userId},
             {$pull: {thought: {thoughtId: req.params.reactionId}}},

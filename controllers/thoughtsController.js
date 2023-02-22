@@ -1,51 +1,47 @@
 const { Reaction, User, Thought } = require('../models');
 
 module.exports = {
-    getNetworks(req, res) {
-        Reaction.find()
-            .then((reactions) => res.json(reactions))
+    getThoughts(req, res) {
+        Thought.find()
+            .then((thoughts) => res.json(thoughts))
             .catch((err) => res.status(500).json(err));
     },
-    getSingleNetwork(req, res) {
-        Reaction.findOne({ _id: req.params.networkId })
+    getThoughtById(req, res) {
+        Thought.findOne({ _id: req.params.thoughtId })
             .select('-_v')
-            .then((reaction) =>
-                !reaction
-                    ? res.status(404).json({ message: 'No reaction with that ID' })
-                    : res, json(reaction)
+            .then((thought) =>
+               
+                 res, json(thought)
             )
             .catch((err) => res.status(500).json(err));
     },
 
-    createNetwork(req, res) {
-        Reaction.create(req.body)
-            .then((reaction) => res.json(reaction))
+    createThought(req, res) {
+        Thought.create(req.body)
+            .then((thought) => res.json(thought))
             .catch((err) => {
                 console.log(err);
                 return res.status(500).json(err);
             });
     },
 
-    deleteNetwork(req, res) {
-        Reaction.findOneAndDelete({ _id: req.params.networkId })
-            .then((reaction) =>
-                !reaction
-                    ? res.status(404).json({ message: 'No reaction with that ID' })
-                    : User.deleteMany({ _id: { $in: reaction.users } })
+    deleteThought(req, res) {
+        Thought.findOneAndDelete({ _id: req.params.thoughtId })
+            .then((thought) =>
+             
+                    User.deleteMany({ _id: { $in: thought.users } })
             )
-            .then(()=> res.json({message: 'Reaction and users deleted!'}))
+            .then(()=> res.json({message: 'Thought and users deleted!'}))
             .catch((err)=> res.status(500).json(err));
     },
-    updateNetwork(req,res) {
-        Reaction.findOneAndUpdate(
-            {_id: req.params.reactionId},
+    updateThought(req,res) {
+        Thought.findOneAndUpdate(
+            {_id: req.params.thoughtId},
             {$set: req.body},
             {runValidators: true, new: true}
         )
-        .then((reaction)=> 
-        !reaction
-        ? res.status(404).json({message: 'No reaction that id!'})
-        : res.json(reaction)
+        .then((thought)=> 
+        res.json(thought)
         )
         .catch((err)=> res.status(500).json(err));
     },
