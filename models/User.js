@@ -5,28 +5,33 @@ const userSchema = new Schema(
     {
         username: {
             type: String,
+            unique: true,
             required: true,
-            max_length: 50,
+            trim: true,
         },
         email: {
             type: String,
+            unique: true,
             required: true,
-            max_length: 50,
+            match: "Please enter a valid email address",
+        
         },
       
         thoughts: {
-            ref:'thoughts',
-            type:Schema.Types.ObjectId
+            type:Schema.Types.ObjectId,
+            ref:'thoughts',  
         },
         friends: {
-            ref: 'user',
-            type: Schema.Types.ObjectId
+            type: Schema.Types.ObjectId, 
+            ref: 'user', 
         },
     },
     {
         toJSON: {
+            virtuals: true,
             getters: true,
         },
+        id: false,
     }
 );
 
