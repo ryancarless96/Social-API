@@ -6,12 +6,8 @@ module.exports = {
 
     getUsers(req, res) {
         User.find()
-            .then(async (users) => {
-                const userObj = {
-                    users,
-                    headCount: await headCount(),
-                };
-                return res.json(userObj);
+            .then((users) => {
+                 res.json(users);
             })
             .catch((err) => {
                 console.log(err);
