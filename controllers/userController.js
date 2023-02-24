@@ -22,7 +22,7 @@ module.exports = {
                     ? res.status(404).json({ message: 'No user with that ID' })
                     : res.json({
                         user,
-                        grade: await grade(req.params.userId),
+                        // grade: await grade(req.params.userId),
                     })
             )
             .catch((err) => {
@@ -35,8 +35,18 @@ module.exports = {
             .then((user) => res.json(user))
             .catch((err) => res.status(500).json(err));
     },
+    updateUser({params, body},res) {
+        User.findOneAndUpdate({_id: params.id}, body, {new: true})
 
-    
+        .then(dbUserData=> {
+            if(!dbUserData) {
+                res.json(400).json({message: 'No users found with this id!'});
+                return;
+            }
+            res.json(dbUserData)
+        })
+        .catch(err => res.status(400).json(err));
+    },
     deleteUser(req, res) {
         User.findOneAndRemove({ _id: req.params.userId })
             .then((user) =>
