@@ -45,7 +45,7 @@ module.exports = {
             }
             res.json(dbUserData)
         })
-        // .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
     deleteUser(req, res) {
         User.findOneAndRemove({ _id: req.params.userId })
