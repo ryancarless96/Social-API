@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 
@@ -40,12 +39,12 @@ module.exports = {
 
         .then(dbUserData=> {
             if(!dbUserData) {
-                res.json(400).json({message: 'No users found with this id!'});
+                // res.json(400).json({message: 'No users found with this id!'});
                 return;
             }
             res.json(dbUserData)
         })
-        .catch(err => res.status(400).json(err));
+        // .catch(err => res.status(400).json(err));
     },
     deleteUser(req, res) {
         User.findOneAndRemove({ _id: req.params.userId })
