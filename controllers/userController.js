@@ -35,7 +35,7 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
     updateUser({params, body},res) {
-        User.findOneAndUpdate({_id: params.id}, body, {new: true})
+        User.findOneAndUpdate({_id: params.userId}, {$set:body}, {new: true})
 
         .then(dbUserData=> {
             if(!dbUserData) {
@@ -44,7 +44,7 @@ module.exports = {
             }
             res.json(dbUserData)
         })
-        .catch(err => res.status(400).json(err));
+         .catch(err => res.status(400).json(err));
     },
     deleteUser(req, res) {
         User.findOneAndRemove({ _id: req.params.userId })

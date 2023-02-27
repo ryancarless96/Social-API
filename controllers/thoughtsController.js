@@ -11,9 +11,9 @@ module.exports = {
             .select('-_v')
             .then((thought) =>
                
-                 res, json(thought)
+                 res.json(thought)
             )
-            .catch((err) => res.status(500).json(err));
+            // .catch((err) => res.status(500).json(err));
     },
 
     createThought(req, res) {

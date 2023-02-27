@@ -11,9 +11,7 @@ const {
 
 } = require('../../controllers/thoughtsController');
 
-router.route("/").get(getThoughts);
-
-router.route('/:userId').post(createThought);
+router.route("/").get(getThoughts).post(createThought);
 
 
 router
